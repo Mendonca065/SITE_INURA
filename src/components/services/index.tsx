@@ -1,4 +1,6 @@
 import { motion } from "framer-motion";
+import { Wifi, Network, ArrowUpRight } from "lucide-react";
+import AnchorLink from "react-anchor-link-smooth-scroll";
 import type { SelectedPage } from "@/utils/types";
 
 type Props = {
@@ -7,82 +9,126 @@ type Props = {
 
 const Services = ({ setSelectedPage }: Props) => {
   return (
-    <section id="services" className="bg-gray-20 px-6 py-24">
-      <motion.div
-        className="mx-auto w-5/6"
-        onViewportEnter={() => setSelectedPage("services")}
-      >
-        {/* HEADER */}
-        <motion.div
-          className="mx-auto max-w-3xl text-center"
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.5 }}
-          transition={{ duration: 0.5 }}
-          variants={{
-            hidden: { opacity: 0, y: 40 },
-            visible: { opacity: 1, y: 0 },
-          }}
-        >
-          <h2 className="text-4xl font-bold text-gray-800">Nossos Serviços</h2>
+    <section id="services" className="relative bg-black py-32 text-white overflow-hidden selection:bg-orange-500 selection:text-white">
+      
+      {/* Luz ambiente sutil */}
+      <div className="pointer-events-none absolute left-1/3 top-1/2 -translate-y-1/2 h-[500px] w-[500px] rounded-full bg-orange-500/5 blur-[160px]" />
 
-          <p className="mt-4 text-gray-600">
-            Soluções modernas para criar e gerenciar máquinas virtuais com
-            flexibilidade, segurança e alta performance.
-          </p>
-        </motion.div>
+      <div className="mx-auto w-11/12 max-w-[1240px]">
+        
+        {/* Cabeçalho */}
+        <div className="mb-20 flex flex-col items-center text-center">
+          <motion.span 
+            initial={{ opacity: 0, y: 15 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="mb-3 text-xs font-semibold uppercase tracking-[0.25em] text-orange-500"
+          >
+            Soluções Complementares
+          </motion.span>
+          
+          <motion.h2 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.1 }}
+            className="bg-gradient-to-b from-white via-white/90 to-white/30 bg-clip-text text-5xl font-extrabold tracking-tight text-transparent sm:text-7xl md:text-8xl"
+          >
+            Ecossistema INURA.
+          </motion.h2>
 
-        {/* CARDS */}
-        <div className="mt-16 grid gap-8 md:grid-cols-3">
-          {[
-            {
-              title: "Provisionamento Sob Demanda",
-              description:
-                "Crie máquinas virtuais rapidamente para desenvolvimento, testes ou produção com total flexibilidade.",
-              number: "01",
-            },
-            {
-              title: "Alta Performance",
-              description:
-                "Recursos otimizados para garantir desempenho estável e máximo aproveitamento da infraestrutura.",
-              number: "02",
-            },
-            {
-              title: "Segurança Avançada",
-              description:
-                "Ambientes isolados e protegidos para garantir confiabilidade e proteção total dos seus dados.",
-              number: "03",
-            },
-          ].map((service, index) => (
-            <motion.div
-              key={index}
-              className="rounded-2xl border border-primary-100 bg-white p-8 shadow-md transition duration-300 hover:-translate-y-2 hover:shadow-xl"
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, amount: 0.3 }}
-              transition={{ delay: index * 0.2, duration: 0.5 }}
-              variants={{
-                hidden: { opacity: 0, y: 40 },
-                visible: { opacity: 1, y: 0 },
-              }}
-            >
-              <div className="mb-6 flex h-12 w-12 items-center justify-center rounded-lg bg-primary-100">
-                <span className="text-lg font-bold text-primary-500">
-                  {service.number}
-                </span>
+          <motion.p 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.2 }}
+            className="mt-6 max-w-2xl text-lg font-normal text-[#86868b] sm:text-2xl leading-relaxed tracking-tight"
+          >
+            Expandimos a infraestrutura dedicada com soluções sob medida para conectar filiais e garantir sinal Wi-Fi impecável em ambientes de alta densidade.
+          </motion.p>
+        </div>
+
+        {/* Grid dos Serviços Adicionais */}
+        <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
+          
+          {/* Card 1: Ponto a Ponto */}
+          <motion.div 
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="group relative flex flex-col justify-between overflow-hidden rounded-[32px] border border-white/10 bg-[#1d1d1f] p-8 sm:p-12 transition-all duration-500 hover:border-white/20"
+          >
+            <div>
+              <div className="mb-8 flex h-14 w-14 items-center justify-center rounded-2xl bg-orange-500/10 border border-orange-500/20 text-orange-500">
+                <Network size={28} />
               </div>
 
-              <h3 className="text-lg font-semibold text-gray-800">
-                {service.title}
-              </h3>
+              <span className="rounded-full bg-white/5 border border-white/10 px-3 py-1 text-[11px] font-medium uppercase tracking-wider text-[#86868b]">
+                Interconexão de Unidades
+              </span>
 
-              <p className="mt-3 text-sm text-gray-600">
-                {service.description}
+              <h3 className="mt-4 text-3xl font-bold tracking-tight text-white sm:text-4xl">
+                Link Ponto a Ponto.
+              </h3>
+              
+              <p className="mt-4 text-base font-normal leading-relaxed text-[#86868b] sm:text-lg">
+                Conecte filiais, datacenters e escritórios em uma rede L2/L3 dedicada em fibra óptica. Transmissão privada com latência quase nula e segurança total de dados sem passar pela internet pública.
               </p>
-            </motion.div>
-          ))}
+            </div>
+
+            <div className="mt-10 border-t border-white/5 pt-6">
+              <AnchorLink 
+                href="#contact"
+                onClick={() => setSelectedPage("contact")}
+                className="inline-flex items-center gap-1.5 text-sm font-semibold text-orange-500 transition-all duration-300 group-hover:gap-2.5 group-hover:text-orange-400"
+              >
+                <span>Projectar interconexão dedicada</span>
+                <ArrowUpRight size={18} />
+              </AnchorLink>
+            </div>
+          </motion.div>
+
+          {/* Card 2: Wi-Fi Hotspot de Alta Densidade */}
+          <motion.div 
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+            className="group relative flex flex-col justify-between overflow-hidden rounded-[32px] border border-white/10 bg-[#1d1d1f] p-8 sm:p-12 transition-all duration-500 hover:border-white/20"
+          >
+            <div>
+              <div className="mb-8 flex h-14 w-14 items-center justify-center rounded-2xl bg-orange-500/10 border border-orange-500/20 text-orange-500">
+                <Wifi size={28} />
+              </div>
+
+              <span className="rounded-full bg-white/5 border border-white/10 px-3 py-1 text-[11px] font-medium uppercase tracking-wider text-[#86868b]">
+                Infraestrutura de Acesso
+              </span>
+
+              <h3 className="mt-4 text-3xl font-bold tracking-tight text-white sm:text-4xl">
+                Wi-Fi Corporativo Pro.
+              </h3>
+              
+              <p className="mt-4 text-base font-normal leading-relaxed text-[#86868b] sm:text-lg">
+                Projetado para centenas de acessos simultâneos sem gargalos. Dimensionamento de Access Points profissionais, captive portal personalizado e roaming contínuo em todo o seu espaço corporativo ou evento.
+              </p>
+            </div>
+
+            <div className="mt-10 border-t border-white/5 pt-6">
+              <AnchorLink 
+                href="#contact"
+                onClick={() => setSelectedPage("contact")}
+                className="inline-flex items-center gap-1.5 text-sm font-semibold text-orange-500 transition-all duration-300 group-hover:gap-2.5 group-hover:text-orange-400"
+              >
+                <span>Solicitar estudo de cobertura</span>
+                <ArrowUpRight size={18} />
+              </AnchorLink>
+            </div>
+          </motion.div>
+
         </div>
-      </motion.div>
+      </div>
     </section>
   );
 };

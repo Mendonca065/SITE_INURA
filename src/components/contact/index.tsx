@@ -1,14 +1,6 @@
 import { motion } from "framer-motion";
+import { MessageSquare, Mail, Phone, ShieldCheck } from "lucide-react";
 import type { SelectedPage } from "@/utils/types";
-import ActionButton from "@/utils/ActionButton";
-
-import {
-  PhoneIcon,
-  EnvelopeIcon,
-  MapPinIcon,
-  WrenchScrewdriverIcon,
-  SignalIcon,
-} from "@heroicons/react/24/outline";
 
 type Props = {
   setSelectedPage: (value: SelectedPage) => void;
@@ -16,148 +8,92 @@ type Props = {
 
 const Contact = ({ setSelectedPage }: Props) => {
   return (
-    <section id="support" className="py-20 md:py-28">
-      <motion.div
-        className="mx-auto w-5/6"
-        onViewportEnter={() => setSelectedPage("support")}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, amount: 0.3 }}
-        transition={{ duration: 0.6 }}
-        variants={{
-          hidden: { opacity: 0, y: 40 },
-          visible: { opacity: 1, y: 0 },
-        }}
-      >
-        {/* TÍTULO */}
-        <div className="mx-auto mb-16 max-w-3xl text-center">
-          <h1 className="text-3xl font-bold text-gray-900 sm:text-4xl md:text-5xl">
-            Suporte
-          </h1>
+    <section id="contact" className="relative bg-black py-32 text-white overflow-hidden selection:bg-orange-500 selection:text-white border-t border-white/10">
+      
+      {/* Luz ambiente centralizada */}
+      <div className="pointer-events-none absolute left-1/2 bottom-0 -translate-x-1/2 h-[500px] w-[500px] rounded-full bg-orange-500/10 blur-[180px]" />
 
-          <p className="mt-6 text-gray-600">
-            Fale conosco para obter suporte técnico, informações sobre nossos
-            serviços ou qualquer dúvida que você possa ter. Nossa equipe está
-            pronta para ajudar!
-          </p>
-        </div>
-
-        {/* GRID */}
-        <div className="lg:grid-cols-2 grid grid-cols-1 items-center gap-12">
-          <motion.div
-            initial={{ opacity: 0, x: -40 }}
+      <div className="mx-auto w-11/12 max-w-[1240px]">
+        <div className="grid grid-cols-1 gap-12 lg:grid-cols-12 lg:items-center">
+          
+          {/* Lado Esquerdo: Chamada Comercial */}
+          <motion.div 
+            initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
-            transition={{ delay: 0.2, duration: 0.6 }}
             viewport={{ once: true }}
-            className="rounded-3xl bg-gradient-to-br from-gray-50 to-gray-100 p-10 shadow-xl"
+            className="lg:col-span-6"
           >
-            <h2 className="mb-10 text-2xl font-bold text-gray-900">
-              Informações de contato
+            <span className="mb-3 inline-block text-xs font-semibold uppercase tracking-[0.25em] text-orange-500">
+              Atendimento Especializado
+            </span>
+            <h2 className="bg-gradient-to-b from-white via-white/90 to-white/30 bg-clip-text text-4xl font-extrabold tracking-tight text-transparent sm:text-6xl">
+              Elimine gargalos na sua operação.
             </h2>
+            <p className="mt-6 text-base text-[#86868b] sm:text-xl leading-relaxed">
+              Fale diretamente com nossa equipe de engenharia para avaliar a viabilidade técnica e dimensionar um projeto de conectividade sob medida.
+            </p>
 
-            {/* GRID HORIZONTAL */}
-            <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
-              {/* TELEFONE */}
-              <div className="flex gap-3">
-                <PhoneIcon className="h-6 w-6 text-primary-500" />
-
-                <div>
-                  <h3 className="text-lg font-semibold text-gray-900">
-                    Telefone
-                  </h3>
-
-                  <a
-                    href="https://wa.me/558331429400"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-[#0096FF] transition hover:opacity-80"
-                  >
-                    (83) 3142-9400
-                  </a>
-
-                  <p className="mt-1 text-sm text-gray-500">
-                    Seg-Sex: 8h às 18h | Sáb: 8h às 12h
-                  </p>
-                </div>
+            <div className="mt-10 space-y-4">
+              <div className="flex items-center gap-3 text-sm text-[#86868b]">
+                <ShieldCheck size={20} className="text-orange-500" />
+                <span>Análise de viabilidade técnica sem compromisso</span>
               </div>
-
-              {/* EMAIL */}
-              <div className="flex gap-3">
-                <EnvelopeIcon className="h-6 w-6 text-primary-500" />
-
-                <div>
-                  <h3 className="text-lg font-semibold text-gray-900">
-                    E-mail
-                  </h3>
-
-                  <p className="text-gray-600">contato@g3netfibra.com.br</p>
-
-                  <p className="mt-1 text-sm text-gray-500">
-                    Retorno em até 24h úteis.
-                  </p>
-                </div>
+              <div className="flex items-center gap-3 text-sm text-[#86868b]">
+                <ShieldCheck size={20} className="text-orange-500" />
+                <span>Atendimento humano direto por especialistas</span>
               </div>
-
-              {/* CONTATO TÉCNICO */}
-              <div className="flex gap-3">
-                <WrenchScrewdriverIcon className="h-6 w-6 text-primary-500" />
-
-                <div>
-                  <h3 className="text-lg font-semibold text-gray-900">
-                    Contato técnico
-                  </h3>
-
-                  <p className="text-gray-600">suporte@g3netfibra.com.br</p>
-
-                  <p className="mt-1 text-sm text-gray-500">
-                    Suporte técnico especializado.
-                  </p>
-                </div>
-              </div>
-
-              {/* STATUS DA REDE */}
-              <div className="flex gap-3">
-                <SignalIcon className="h-6 w-6 text-primary-500" />
-
-                <div>
-                  <h3 className="text-lg font-semibold text-gray-900">
-                    Status da rede
-                  </h3>
-
-                  <p className="font-medium text-green-600">Operacional</p>
-
-                  <p className="mt-1 text-sm text-gray-500">
-                    Nenhuma instabilidade detectada.
-                  </p>
-                </div>
-              </div>
-
-              {/* ENDEREÇO */}
-              <div className="flex gap-3 md:col-span-2">
-                <MapPinIcon className="h-6 w-6 text-primary-500" />
-
-                <div>
-                  <h3 className="text-lg font-semibold text-gray-900">
-                    Endereço
-                  </h3>
-
-                  <p className="text-gray-600">
-                    Av. Pres. José Linhares, 204 - Sala 203
-                  </p>
-
-                  <p className="text-gray-600">Bessa, João Pessoa - PB</p>
-                </div>
-              </div>
-            </div>
-
-            <div className="pt-10">
-              <ActionButton setSelectedPage={setSelectedPage}>
-                Fale Conosco
-              </ActionButton>
             </div>
           </motion.div>
+
+          {/* Lado Direito: Card de Ação */}
+          <motion.div 
+            initial={{ opacity: 0, x: 30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            className="lg:col-span-6"
+          >
+            <div className="rounded-[32px] border border-white/10 bg-[#1d1d1f] p-8 sm:p-12 shadow-2xl">
+              <h3 className="text-2xl font-bold text-white sm:text-3xl">Falar com um Consultor</h3>
+              <p className="mt-2 text-sm text-[#86868b]">
+                Escolha o canal de preferência para dar início ao seu atendimento corporativo.
+              </p>
+
+              <div className="mt-8 space-y-4">
+                {/* Botão WhatsApp */}
+                <a 
+                  href="https://wa.me/5583900000000?text=Olá,%20gostaria%20de%20consultar%20a%20viabilidade%20do%20Link%20Dedicado%20INURA." 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="flex items-center justify-center gap-3 w-full rounded-full bg-orange-500 py-4 px-6 text-sm font-semibold text-white transition-all duration-300 hover:bg-orange-600 shadow-lg shadow-orange-500/20"
+                >
+                  <MessageSquare size={18} />
+                  <span>Conversar via WhatsApp</span>
+                </a>
+
+                {/* Opção Telefone / E-mail */}
+                <div className="pt-4 border-t border-white/5 grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div className="flex items-center gap-3 rounded-2xl bg-white/5 p-4 border border-white/5">
+                    <Phone size={18} className="text-orange-500" />
+                    <div>
+                      <span className="block text-[11px] text-[#86868b] uppercase">Atendimento</span>
+                      <span className="text-xs font-semibold text-white">0800 000 0000</span>
+                    </div>
+                  </div>
+                  <div className="flex items-center gap-3 rounded-2xl bg-white/5 p-4 border border-white/5">
+                    <Mail size={18} className="text-orange-500" />
+                    <div>
+                      <span className="block text-[11px] text-[#86868b] uppercase">Comercial</span>
+                      <span className="text-xs font-semibold text-white">contato@inura.com.br</span>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </motion.div>
+
         </div>
-      </motion.div>
+      </div>
     </section>
   );
 };

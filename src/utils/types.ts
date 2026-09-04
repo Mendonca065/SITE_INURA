@@ -1,4 +1,13 @@
-export type SelectedPage = "hero" | "services" | "vps" | "support" | "server";
+export type SelectedPage = 
+  | "hero" 
+  | "highlights" 
+  | "deepdive" 
+  | "shielding" 
+  | "proof"
+  | "vps" 
+  | "services" 
+  | "support" 
+  | "contact";
 
 // types/server.ts
 export type ServerConfig = {

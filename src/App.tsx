@@ -8,6 +8,8 @@ import Vps from "./components/vps";
 import Services from "./components/services";
 import Contact from "./components/contact";
 import Footer from "./components/footer";
+import Shielding from "./components/shielding";
+import Proof from "./components/proof";
 
 function App() {
   const [selectedPage, setSelectedPage] = useState<SelectedPage>("hero");
@@ -43,11 +45,20 @@ function App() {
       
       {/* 3. Exploração Profunda (Rotas Inteligentes IX e Manifesto) */}
       <DeepDive />
+
+      {/* 4. A Blindagem: Ensina ao cliente corporativo que essa velocidade é protegida por segurança impenetrável (IP Dedicado, Dupla Abordagem e Monitoramento Proativo) */}
+      <Shielding setSelectedPage={setSelectedPage}/>
+
+      {/* 5. A Prova: Apresenta a matriz de decisão comparativa e comprova a resiliência com cases reais sem quedas */}
+      <Proof setSelectedPage={setSelectedPage} />
       
-      {/* 4. O resto do seu site original */}
-      <Vps setSelectedPage={setSelectedPage} />
+      {/* 6. Ecossistema de Serviços: Apresenta as soluções adicionais sob medida (Link Ponto a Ponto e Wi-Fi Corporativo Pro) */}
       <Services setSelectedPage={setSelectedPage} />
+
+      {/* 7. Conversão Comercial: Canal direto de contato com a engenharia para consulta de viabilidade e orçamentos */}
       <Contact setSelectedPage={setSelectedPage} />
+      
+      {/* Rodapé institucional e links de navegação rápida */}
       <Footer />
     </div>
   );
