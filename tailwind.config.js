@@ -4,30 +4,31 @@ export default {
   theme: {
     extend: {
       colors: {
-        /* NEUTROS */
-        "gray-20": "#FFFFFF",
-        "gray-50": "#FDF5E1",
-
-        /* PRIMARY — AMARELO */
-        "primary-100": "#FBEAC3",
-        "primary-300": "#F8E0A5",
-        "primary-500": "#F6D588",
+        /* Paleta Dark Mode Apple - INURA */
+        "inura-black": "#000000",
+        "inura-card": "#1d1d1f",
+        "inura-gray": "#86868b",
+        
+        /* Mapeamento das Cores Primárias (Laranja INURA) */
+        primary: {
+          500: "#f97316", // Laranja padrão
+          600: "#ea580c", // Hover
+        },
       },
-
       backgroundImage: {
-        "gradient-primary": "linear-gradient(90deg, #F8E0A5 0%, #F6D588 100%)",
+        "gradient-apple": "linear-gradient(180deg, rgba(255, 255, 255, 0.15) 0%, rgba(255, 255, 255, 0) 100%)",
+        "gradient-orange": "linear-gradient(135deg, #f97316 0%, #ea580c 100%)",
       },
-
       fontFamily: {
         dmsans: ["DM Sans", "sans-serif"],
         montserrat: ["Montserrat", "sans-serif"],
       },
     },
-
     screens: {
       xs: "480px",
       sm: "768px",
       md: "1060px",
+      lg: "1240px",
     },
   },
   plugins: [],
