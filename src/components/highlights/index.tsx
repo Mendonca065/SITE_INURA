@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { Cpu, Zap, Activity, Gauge } from "lucide-react";
 import HighlightCard from "./HighlightCard";
 import type { SelectedPage } from "@/utils/types";
+import DataPixelArc from "@/components/backgrounds/pixelArc"; // Importação do DataPixelArc
 
 type Props = {
   setSelectedPage: (value: SelectedPage) => void;
@@ -9,20 +10,31 @@ type Props = {
 
 const Highlights = ({ setSelectedPage }: Props) => {
   return (
-    <section id="highlights" className="relative bg-black py-32 text-white overflow-hidden selection:bg-orange-500 selection:text-white">
+    <section 
+      id="highlights" 
+      className="relative bg-black py-20 sm:py-32 text-white overflow-hidden selection:bg-orange-500 selection:text-white"
+    >
       
-      {/* Glow Ambiente da Seção */}
-      <div className="pointer-events-none absolute right-1/4 top-1/3 h-[500px] w-[500px] rounded-full bg-orange-500/5 blur-[180px]" />
+      {/* ------------------------------------------------------------------- */}
+      {/* DATA PIXEL ARC (BACKGROUND WEBGEL INTERATIVO INURA)                 */}
+      {/* ------------------------------------------------------------------- */}
+      <div className="absolute inset-0 z-0 pointer-events-none opacity-40">
+        <DataPixelArc />
+      </div>
 
-      <div className="mx-auto w-11/12 max-w-[1240px]">
+      {/* Glow Ambiente Auxiliar */}
+      <div className="pointer-events-none absolute right-1/4 top-1/3 z-0 h-[300px] sm:h-[500px] w-[300px] sm:w-[500px] rounded-full bg-orange-500/5 blur-[120px] sm:blur-[180px]" />
+
+      {/* Conteúdo da Seção em Camada Superior */}
+      <div className="relative z-10 mx-auto w-11/12 max-w-[1240px]">
         
         {/* Título e Posicionamento de Marca */}
-        <div className="mb-20 flex flex-col items-center text-center">
+        <div className="mb-12 sm:mb-20 flex flex-col items-center text-center">
           <motion.span 
             initial={{ opacity: 0, y: 15 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="mb-3 text-xs font-semibold uppercase tracking-[0.25em] text-orange-500"
+            className="mb-3 text-[10px] sm:text-xs font-semibold uppercase tracking-[0.2em] sm:tracking-[0.25em] text-orange-500"
           >
             A Máquina
           </motion.span>
@@ -32,7 +44,7 @@ const Highlights = ({ setSelectedPage }: Props) => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="bg-gradient-to-b from-white via-white/90 to-white/30 bg-clip-text text-4xl font-extrabold tracking-tight text-transparent sm:text-6xl md:text-7xl"
+            className="bg-gradient-to-b from-white via-white/90 to-white/30 bg-clip-text text-3xl font-extrabold tracking-tight text-transparent sm:text-6xl md:text-7xl lg:text-8xl"
           >
             Projetado para o extremo.
           </motion.h2>
@@ -42,7 +54,7 @@ const Highlights = ({ setSelectedPage }: Props) => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.2 }}
-            className="mt-6 max-w-2xl text-base font-normal text-[#86868b] sm:text-xl leading-relaxed"
+            className="mt-4 sm:mt-6 max-w-2xl text-sm sm:text-lg md:text-2xl font-normal text-[#86868b] leading-relaxed tracking-tight"
           >
             Engenharia de fibra óptica sem compartilhamento. Toda a capacidade contratada entregue com latência mínima e simetria absoluta.
           </motion.p>
@@ -63,7 +75,7 @@ const Highlights = ({ setSelectedPage }: Props) => {
           
           {/* Card 1: Fibra Exclusiva (Largo - 2 Colunas) */}
           <HighlightCard 
-            className="md:col-span-2"
+            className="md:col-span-2 backdrop-blur-md"
             icon={Cpu}
             tag="1.1 A Engenharia"
             title="Fibra Ponto a Ponto Exclusiva."
@@ -86,7 +98,7 @@ const Highlights = ({ setSelectedPage }: Props) => {
 
           {/* Card 2: Simetria (Quadrado - 1 Coluna) */}
           <HighlightCard 
-            className="md:col-span-1"
+            className="md:col-span-1 backdrop-blur-md"
             icon={Gauge}
             tag="1.2 O Pulso"
             title="Simetria Real."
@@ -108,7 +120,7 @@ const Highlights = ({ setSelectedPage }: Props) => {
 
           {/* Card 3: Roteamento / Backbone (Quadrado - 1 Coluna) */}
           <HighlightCard 
-            className="md:col-span-1"
+            className="md:col-span-1 backdrop-blur-md"
             icon={Zap}
             tag="1.3 O Backbone"
             title="Roteamento Inteligente."
@@ -124,7 +136,7 @@ const Highlights = ({ setSelectedPage }: Props) => {
 
           {/* Card 4: Visibilidade / Telemetria (Largo - 2 Colunas) */}
           <HighlightCard 
-            className="md:col-span-2"
+            className="md:col-span-2 backdrop-blur-md"
             icon={Activity}
             tag="1.4 Visibilidade"
             title="Controle em Tempo Real."

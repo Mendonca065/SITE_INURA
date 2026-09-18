@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
 import AnchorLink from "react-anchor-link-smooth-scroll";
 import type { SelectedPage } from "@/utils/types";
+import WaveArc from "@/components/backgrounds/waveArc"; // Importando do novo caminho
 
 type Props = {
   setSelectedPage: (value: SelectedPage) => void;
@@ -9,12 +10,28 @@ type Props = {
 
 const Shielding = ({ setSelectedPage }: Props) => {
   return (
-    <section id="shielding" className="relative bg-black py-32 text-white overflow-hidden selection:bg-orange-500 selection:text-white">
-      
-      {/* Luz ambiente sutil no estilo Apple Event */}
-      <div className="pointer-events-none absolute left-1/2 top-1/3 -translate-x-1/2 -translate-y-1/2 h-[600px] w-[600px] rounded-full bg-orange-500/10 blur-[160px]" />
+    <section 
+      id="shielding" 
+      className="relative bg-black py-32 text-white overflow-hidden selection:bg-orange-500 selection:text-white"
+    >
+      {/* Background Animado de Ondas (Laranja INURA) */}
+      <div className="absolute inset-0 z-0 pointer-events-none opacity-40">
+        <WaveArc
+          backgroundColor="#000000"
+          lineColor="rgb(249, 115, 22)"
+          lineWidth={1.2}
+          lineCount={60}
+          speed={4}
+          glow={12}
+          interactive={true}
+        />
+      </div>
 
-      <div className="mx-auto w-11/12 max-w-[1240px]">
+      {/* Glow de fundo complementar */}
+      <div className="pointer-events-none absolute left-1/2 top-1/3 z-0 -translate-x-1/2 -translate-y-1/2 h-[600px] w-[600px] rounded-full bg-orange-500/10 blur-[160px]" />
+
+      {/* Conteúdo da Seção (Camada superior z-10) */}
+      <div className="relative z-10 mx-auto w-11/12 max-w-[1240px]">
         
         {/* Cabeçalho estilo Apple Pro */}
         <div className="mb-20 flex flex-col items-center text-center">
@@ -48,12 +65,12 @@ const Shielding = ({ setSelectedPage }: Props) => {
           </motion.p>
         </div>
 
-        {/* Bento Grid estilo MacBook Pro */}
+        {/* Bento Grid estilo MacBook Pro com suporte a translucidez backdrop-blur */}
         <div className="grid grid-cols-1 gap-6 md:grid-cols-12">
           
-          {/* Card 2.1: IP Dedicado */}
+          {/* Card 01: IP Dedicado */}
           <motion.div 
-            className="group relative flex flex-col justify-between overflow-hidden rounded-[32px] border border-white/10 bg-[#1d1d1f] p-8 sm:p-12 transition-all duration-500 hover:border-white/20 md:col-span-7"
+            className="group relative flex flex-col justify-between overflow-hidden rounded-[32px] border border-white/10 bg-[#1d1d1f]/90 backdrop-blur-md p-8 sm:p-12 transition-all duration-500 hover:border-white/20 md:col-span-7"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -90,9 +107,9 @@ const Shielding = ({ setSelectedPage }: Props) => {
             </div>
           </motion.div>
 
-          {/* Card 2.2: Dupla Abordagem */}
+          {/* Card 02: Dupla Abordagem */}
           <motion.div 
-            className="group relative flex flex-col justify-between overflow-hidden rounded-[32px] border border-white/10 bg-[#1d1d1f] p-8 sm:p-12 transition-all duration-500 hover:border-white/20 md:col-span-5"
+            className="group relative flex flex-col justify-between overflow-hidden rounded-[32px] border border-white/10 bg-[#1d1d1f]/90 backdrop-blur-md p-8 sm:p-12 transition-all duration-500 hover:border-white/20 md:col-span-5"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -129,9 +146,9 @@ const Shielding = ({ setSelectedPage }: Props) => {
             </div>
           </motion.div>
 
-          {/* Card 2.3: INURA Elite */}
+          {/* Card 03: INURA Elite */}
           <motion.div 
-            className="group relative flex flex-col justify-between overflow-hidden rounded-[32px] border border-white/10 bg-[#1d1d1f] p-8 sm:p-12 transition-all duration-500 hover:border-white/20 md:col-span-12 md:flex-row md:items-center"
+            className="group relative flex flex-col justify-between overflow-hidden rounded-[32px] border border-white/10 bg-[#1d1d1f]/90 backdrop-blur-md p-8 sm:p-12 transition-all duration-500 hover:border-white/20 md:col-span-12 md:flex-row md:items-center"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}

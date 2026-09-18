@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { CheckCircle2, ArrowUpRight, Sparkles } from "lucide-react";
 import AnchorLink from "react-anchor-link-smooth-scroll";
 import type { SelectedPage } from "@/utils/types";
+import LightCurtain from "@/components/backgrounds/lightCurtain"; // Importação do LightCurtain
 
 // Tipagem das props recebidas pelo componente
 type Props = {
@@ -9,7 +10,6 @@ type Props = {
 };
 
 // Array de dados da Matriz de Decisão.
-// Isolar esses dados fora do componente evita re-renderizações desnecessárias e mantém o JSX limpo.
 const proofMetrics = [
   {
     title: "Compartilhamento de Rede",
@@ -41,25 +41,28 @@ const Proof = ({ setSelectedPage }: Props) => {
   return (
     <section 
       id="proof" 
-      /* py-20 no mobile e py-32 no desktop garante bom respiro vertical em qualquer aparelho */
       className="relative bg-black py-20 sm:py-32 text-white overflow-hidden selection:bg-orange-500 selection:text-white"
     >
       
       {/* ------------------------------------------------------------------- */}
-      {/* GLOW DE FUNDO (Efeito de iluminação suave)                          */}
-      {/* Dimensionado para não estourar a largura da tela em celulares       */}
+      {/* CORTINA DE LUZ (BACKGROUND WEAGL INTERATIVO INURA)                 */}
       {/* ------------------------------------------------------------------- */}
-      <div className="pointer-events-none absolute right-1/4 top-1/2 -translate-y-1/2 h-[300px] sm:h-[500px] w-[300px] sm:w-[500px] rounded-full bg-orange-500/5 blur-[120px] sm:blur-[160px]" />
+      <div className="absolute inset-0 z-0 pointer-events-none opacity-40">
+        <LightCurtain />
+      </div>
 
-      <div className="mx-auto w-11/12 max-w-[1240px]">
+      {/* ------------------------------------------------------------------- */}
+      {/* GLOW DE FUNDO AUXILIAR                                              */}
+      {/* ------------------------------------------------------------------- */}
+      <div className="pointer-events-none absolute right-1/4 top-1/2 z-0 -translate-y-1/2 h-[300px] sm:h-[500px] w-[300px] sm:w-[500px] rounded-full bg-orange-500/5 blur-[120px] sm:blur-[160px]" />
+
+      <div className="relative z-10 mx-auto w-11/12 max-w-[1240px]">
         
         {/* ------------------------------------------------------------------- */}
         {/* CABEÇALHO DA SEÇÃO                                                  */}
-        {/* Usa tipografia fluida (text-3xl -> text-8xl) para não quebrar no mobile */}
         {/* ------------------------------------------------------------------- */}
         <div className="mb-12 sm:mb-20 flex flex-col items-center text-center">
           
-          {/* Subtítulo / Tag superior */}
           <motion.span 
             initial={{ opacity: 0, y: 15 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -69,7 +72,6 @@ const Proof = ({ setSelectedPage }: Props) => {
             A Prova & A Engenharia
           </motion.span>
           
-          {/* Título Principal com Gradiente de Texto */}
           <motion.h2 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -80,7 +82,6 @@ const Proof = ({ setSelectedPage }: Props) => {
             Matriz de Decisão.
           </motion.h2>
 
-          {/* Descrição resumida */}
           <motion.p 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -93,15 +94,14 @@ const Proof = ({ setSelectedPage }: Props) => {
         </div>
 
         {/* ========================================================================= */}
-        {/* 1A. VISÃO DESKTOP: TABELA COMPARATIVA                                     */}
-        {/* 'hidden md:block' -> Oculta em celulares e exibe apenas em telas >= 768px */}
+        {/* 1A. VISÃO DESKTOP: TABELA COMPARATIVA WITH BACKDROP BLUR                 */}
         {/* ========================================================================= */}
         <motion.div 
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="hidden md:block mb-32 overflow-hidden rounded-[32px] border border-white/10 bg-[#1d1d1f]"
+          className="hidden md:block mb-32 overflow-hidden rounded-[32px] border border-white/10 bg-[#1d1d1f]/90 backdrop-blur-md"
         >
           <table className="w-full text-left border-collapse">
             <thead>
@@ -127,8 +127,6 @@ const Proof = ({ setSelectedPage }: Props) => {
 
         {/* ========================================================================= */}
         {/* 1B. VISÃO MOBILE: CARDS EMPILHADOS                                        */}
-        {/* 'block md:hidden' -> Exibe em celulares e esconde em telas maiores        */}
-        {/* Evita rolagem horizontal e otimiza a leitura em telas pequenas            */}
         {/* ========================================================================= */}
         <div className="block md:hidden mb-20 space-y-4">
           {proofMetrics.map((item, idx) => (
@@ -138,14 +136,12 @@ const Proof = ({ setSelectedPage }: Props) => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: idx * 0.1 }}
-              className="rounded-2xl border border-white/10 bg-[#1d1d1f] p-5 space-y-4"
+              className="rounded-2xl border border-white/10 bg-[#1d1d1f]/90 backdrop-blur-md p-5 space-y-4"
             >
-              {/* Nome da Métrica */}
               <h3 className="text-sm font-semibold uppercase tracking-wider text-white border-b border-white/5 pb-3">
                 {item.title}
               </h3>
 
-              {/* Destaque do Link Dedicado INURA (Card de maior impacto no mobile) */}
               <div className="rounded-xl border border-orange-500/30 bg-orange-500/10 p-3.5 flex items-start gap-3">
                 <Sparkles size={18} className="text-orange-500 mt-0.5 shrink-0" />
                 <div>
@@ -154,7 +150,6 @@ const Proof = ({ setSelectedPage }: Props) => {
                 </div>
               </div>
 
-              {/* Comparativo secundário em duas colunas compactas */}
               <div className="grid grid-cols-2 gap-2 text-xs pt-1">
                 <div className="rounded-lg bg-white/5 p-2.5">
                   <span className="block text-[10px] text-[#86868b] uppercase">Banda Larga</span>
@@ -181,19 +176,15 @@ const Proof = ({ setSelectedPage }: Props) => {
           </p>
         </div>
 
-        {/* Grid dos Cases: 1 coluna no mobile (`grid-cols-1`) e 12 colunas no desktop (`md:grid-cols-12`) */}
         <div className="grid grid-cols-1 gap-6 md:grid-cols-12">
           
-          {/* ----------------------------------------------------------------- */}
-          {/* CASE PRINCIPAL: Paraíso do Atlântico (Ocupa 7 colunas no desktop) */}
-          {/* ----------------------------------------------------------------- */}
+          {/* CASE PRINCIPAL: Paraíso do Atlântico */}
           <motion.div 
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            /* Padding adaptativo (p-5 no mobile -> p-12 no desktop) para não amassar conteúdo */
-            className="group relative flex flex-col justify-between overflow-hidden rounded-[24px] sm:rounded-[32px] border border-white/10 bg-[#1d1d1f] p-5 sm:p-8 md:p-12 md:col-span-7"
+            className="group relative flex flex-col justify-between overflow-hidden rounded-[24px] sm:rounded-[32px] border border-white/10 bg-[#1d1d1f]/90 backdrop-blur-md p-5 sm:p-8 md:p-12 md:col-span-7"
           >
             <div>
               <div className="flex flex-wrap items-center justify-between gap-2 mb-4 sm:mb-6">
@@ -208,7 +199,6 @@ const Proof = ({ setSelectedPage }: Props) => {
                 Projeto fim a fim englobando Link Dedicado, Redes Personalizadas e infraestrutura Wi-Fi de alta capacidade para eventos e áreas comuns.
               </p>
 
-              {/* Grid de Estatísticas: 2 colunas com paddings otimizados para telas pequenas */}
               <div className="mt-6 sm:mt-8 grid grid-cols-2 gap-2.5 sm:gap-4">
                 <div className="rounded-xl sm:rounded-2xl bg-white/5 p-3 sm:p-4 border border-white/5">
                   <span className="block text-2xl sm:text-3xl font-extrabold text-white">400+</span>
@@ -229,7 +219,6 @@ const Proof = ({ setSelectedPage }: Props) => {
               </div>
             </div>
 
-            {/* Rodapé do Card com ícone `shrink-0` para evitar deformação do ícone de Check */}
             <div className="mt-8 sm:mt-10 flex items-center justify-between border-t border-white/5 pt-4 sm:pt-6">
               <span className="inline-flex items-center text-xs sm:text-sm font-medium text-emerald-400">
                 <CheckCircle2 size={16} className="mr-2 shrink-0" /> 27 meses operando sem quedas
@@ -237,18 +226,15 @@ const Proof = ({ setSelectedPage }: Props) => {
             </div>
           </motion.div>
 
-          {/* ----------------------------------------------------------------- */}
-          {/* CASES SECUNDÁRIOS: Ilha Dourada e Numar (Ocupam 5 colunas)        */}
-          {/* ----------------------------------------------------------------- */}
+          {/* CASES SECUNDÁRIOS: Ilha Dourada e Numar */}
           <div className="flex flex-col gap-6 md:col-span-5">
             
-            {/* Card Ilha Dourada */}
             <motion.div 
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.1 }}
-              className="flex flex-col justify-between rounded-[24px] sm:rounded-[32px] border border-white/10 bg-[#1d1d1f] p-5 sm:p-8 h-full"
+              className="flex flex-col justify-between rounded-[24px] sm:rounded-[32px] border border-white/10 bg-[#1d1d1f]/90 backdrop-blur-md p-5 sm:p-8 h-full"
             >
               <div>
                 <span className="rounded-full bg-white/5 border border-white/10 px-3 py-1 text-[10px] sm:text-[11px] font-medium uppercase text-[#86868b]">
@@ -264,13 +250,12 @@ const Proof = ({ setSelectedPage }: Props) => {
               </div>
             </motion.div>
 
-            {/* Card Numar */}
             <motion.div 
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className="flex flex-col justify-between rounded-[24px] sm:rounded-[32px] border border-white/10 bg-[#1d1d1f] p-5 sm:p-8 h-full"
+              className="flex flex-col justify-between rounded-[24px] sm:rounded-[32px] border border-white/10 bg-[#1d1d1f]/90 backdrop-blur-md p-5 sm:p-8 h-full"
             >
               <div>
                 <span className="rounded-full bg-white/5 border border-white/10 px-3 py-1 text-[10px] sm:text-[11px] font-medium uppercase text-[#86868b]">
@@ -292,8 +277,6 @@ const Proof = ({ setSelectedPage }: Props) => {
 
         {/* ------------------------------------------------------------------- */}
         {/* BOTÃO DE CHAMADA PARA AÇÃO (CTA INTERMEDIÁRIO)                       */}
-        {/* `w-full sm:w-auto` expande o botão para 100% da largura no celular, */}
-        {/* facilitando o toque com o polegar.                                  */}
         {/* ------------------------------------------------------------------- */}
         <div className="mt-12 sm:mt-16 text-center">
           <AnchorLink 
