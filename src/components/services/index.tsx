@@ -78,14 +78,7 @@ const Services = ({ setSelectedPage }: Props) => {
             </div>
 
             <div className="mt-10 border-t border-white/5 pt-6">
-              <AnchorLink 
-                href="#contact"
-                onClick={() => setSelectedPage("contact")}
-                className="inline-flex items-center gap-1.5 text-sm font-semibold text-orange-500 transition-all duration-300 group-hover:gap-2.5 group-hover:text-orange-400"
-              >
-                <span>Projectar interconexão dedicada</span>
-                <ArrowUpRight size={18} />
-              </AnchorLink>
+             
             </div>
           </motion.div>
 
@@ -116,14 +109,7 @@ const Services = ({ setSelectedPage }: Props) => {
             </div>
 
             <div className="mt-10 border-t border-white/5 pt-6">
-              <AnchorLink 
-                href="#contact"
-                onClick={() => setSelectedPage("contact")}
-                className="inline-flex items-center gap-1.5 text-sm font-semibold text-orange-500 transition-all duration-300 group-hover:gap-2.5 group-hover:text-orange-400"
-              >
-                <span>Solicitar estudo de cobertura</span>
-                <ArrowUpRight size={18} />
-              </AnchorLink>
+            
             </div>
           </motion.div>
 

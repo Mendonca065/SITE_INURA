@@ -20,7 +20,7 @@ const proofMetrics = [
   {
     title: "Estabilidade & Simetria",
     inura: "100% Simétrico 24/7",
-    broadband: "Oscila nos horários de pico",
+    broadband: "Pode oscilar nos horários de pico",
     semi: "Simetria parcial",
   },
   {

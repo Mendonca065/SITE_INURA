@@ -76,7 +76,7 @@ const Contact = ({ setSelectedPage }: Props) => {
                     <Phone size={18} className="text-orange-500" />
                     <div>
                       <span className="block text-[11px] text-[#86868b] uppercase">Atendimento</span>
-                      <span className="text-xs font-semibold text-white">0800 000 0000</span>
+                      <span className="text-xs font-semibold text-white">(83) 99945-8555</span>
                     </div>
                   </div>
                   <div className="flex items-center gap-3 rounded-2xl bg-white/5 p-4 border border-white/5">

@@ -125,7 +125,7 @@ const Footer = ({ setSelectedPage }: Props) => {
                   rel="noopener noreferrer"
                   className="transition-colors duration-300 hover:text-white"
                 >
-                  (83) 3142-9400
+                  (83) 99945-8555
                 </a>
               </li>
 

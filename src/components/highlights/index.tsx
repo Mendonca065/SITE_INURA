@@ -128,9 +128,29 @@ const Highlights = ({ setSelectedPage }: Props) => {
             badge="Latência Mínima"
           >
             {/* Visual Micro-Element: Métricas de Ping */}
-            <div className="flex items-center justify-between rounded-xl bg-white/5 p-3 border border-white/5 text-xs font-mono">
-              <span className="text-[#86868b]">JITTER MÉDIO</span>
-              <span className="font-bold text-emerald-400">&lt; 1ms</span>
+            <div className="space-y-1.5 text-xs font-mono">
+              <div className="mb-2 text-[10px] font-semibold uppercase tracking-wider text-[#86868b]">
+                Latência Média de Redes (RTT)
+              </div>
+
+              {[
+                { city: "João Pessoa", ping: "1ms", highlight: false },
+                { city: "Recife", ping: "3ms" },
+                { city: "Fortaleza", ping: "13ms" },
+                { city: "São Paulo", ping: "36ms" },
+                { city: "Rio de Janeiro", ping: "40ms" },
+                { city: "Miami", ping: "75ms" },
+              ].map((item, idx) => (
+                <div
+                  key={idx}
+                  className="flex items-center justify-between rounded-lg bg-white/5 px-3 py-2 border border-white/5 transition-colors hover:bg-white/10"
+                >
+                  <span className="text-[#86868b]">{item.city}</span>
+                  <span className={`font-bold ${item.highlight ? 'text-orange-500' : 'text-emerald-400'}`}>
+                    {item.ping}
+                  </span>
+                </div>
+              ))}
             </div>
           </HighlightCard>
 
