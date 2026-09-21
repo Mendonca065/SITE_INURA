@@ -12,10 +12,8 @@ const Link = ({ page, label, selectedPage, setSelectedPage }: Props) => {
   return (
     <AnchorLink
       className={`${
-        selectedPage === page 
-          ? "text-white border-white" 
-          : "text-gray-300 border-transparent"
-      } text-xs transition duration-300 hover:text-white flex h-full items-center border-b`}
+        selectedPage === page ? "text-white" : "text-neutral-400"
+      } relative text-sm font-medium transition-colors duration-300 hover:text-white`}
       href={`#${page}`}
       onClick={() => setSelectedPage(page)}
     >

@@ -1,125 +1,161 @@
+import React, { useState } from "react";
+import { motion, useScroll, useMotionValueEvent, AnimatePresence } from "framer-motion";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/solid";
-// Importando a nova logo branca
-import Logo from "@/assets/logo-white.png"; 
 import Link from "./Link";
 import type { SelectedPage } from "@/utils/types";
 import useMediaQuery from "@/app-hooks/useMediaQuery";
-import { useState } from "react";
 import ActionButton from "@/utils/ActionButton";
 
+// Função para juntar classes do Tailwind sem conflitos
+import { clsx, type ClassValue } from "clsx";
+import { twMerge } from "tailwind-merge";
+
+function cn(...inputs: ClassValue[]) {
+  return twMerge(clsx(inputs));
+}
+
 type Props = {
-  isTopOfPage: boolean;
+  isTopOfPage: boolean; // Se não estiver usando, pode remover
   selectedPage: SelectedPage;
   setSelectedPage: (value: SelectedPage) => void;
 };
 
-const Navbar = ({ isTopOfPage, selectedPage, setSelectedPage }: Props) => {
-  const [isMenutoggled, setIsMenuToggled] = useState<boolean>(false);
+const Navbar = ({ selectedPage, setSelectedPage }: Props) => {
+  const [isMenuToggled, setIsMenuToggled] = useState<boolean>(false);
   const isAboveMediumScreens = useMediaQuery("(min-width: 1060px)");
   
-  // Fundo mais translúcido (70%) e blur mais intenso (lg)
-  const navbarBackground = "bg-[#161617]/70 backdrop-blur-lg border-b border-gray-800/50";
+  const { scrollY } = useScroll();
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  // Lógica Resizable: Verifica se passou de 50px de scroll para encolher a navbar
+  useMotionValueEvent(scrollY, "change", (current) => {
+    if (typeof current === "number") {
+      setIsScrolled(current > 50);
+    }
+  });
 
   return (
-    <nav>
-      {/* Removido o py-3 e adicionado h-14 para controle exato da altura */}
-      <div className={`${navbarBackground} fixed top-0 z-30 w-full h-14 transition-all duration-300`}>
-        <div className="mx-auto flex h-full w-5/6 max-w-[1200px] items-center justify-between">
-          
-          {/* TÍTULO / LOGO - ESQUERDA */}
-          <div className="flex h-full items-center">
-            <img alt="Inura Logo" src={Logo} className="h-20 md:h-24 object-contain" />
-          </div>
-
-          {/* LINKS & BOTÃO - DIREITA */}
-          <div className="flex h-full items-center">
-            {isAboveMediumScreens ? (
-              <div className="flex h-full items-center gap-6 text-xs">
-                <Link
-                  page="hero"
-                  label="Visão geral"
-                  selectedPage={selectedPage}
-                  setSelectedPage={setSelectedPage}
-                />
-                <Link
-                  page="server"
-                  label="Especificações"
-                  selectedPage={selectedPage}
-                  setSelectedPage={setSelectedPage}
-                />
-                <Link
-                  page="vps"
-                  label="Comparar"
-                  selectedPage={selectedPage}
-                  setSelectedPage={setSelectedPage}
-                />
-                <Link
-                  page="support"
-                  label="Mude do PC para o Mac"
-                  selectedPage={selectedPage}
-                  setSelectedPage={setSelectedPage}
-                />
-                
-                {/* Botão alinhado */}
-                <div className="ml-2 flex items-center">
-                  <ActionButton setSelectedPage={setSelectedPage}>
-                    Comprar
-                  </ActionButton>
-                </div>
-              </div>
-            ) : (
-              <button
-                className="rounded-full bg-gray-800 p-2"
-                onClick={() => setIsMenuToggled(!isMenutoggled)}
-              >
-                <Bars3Icon className="h-5 w-5 text-white" />
-              </button>
-            )}
-          </div>
+    <AnimatePresence mode="wait">
+      <motion.nav
+        // Animação de redimensionamento em vez de sumir
+        initial={{ top: 0, width: "100%", borderRadius: "0px" }}
+        animate={{
+          top: isScrolled ? 24 : 0, // Desce 24px quando rola (pill), 0 no topo
+          width: isScrolled ? (isAboveMediumScreens ? "max-content" : "90%") : "100%", // Encolhe para o tamanho do conteúdo
+          borderRadius: isScrolled ? "9999px" : "0px", // Fica arredondada ao rolar
+        }}
+        transition={{ duration: 0.4, ease: "easeInOut" }}
+        className={cn(
+          "fixed inset-x-0 z-50 mx-auto flex items-center justify-between gap-8 bg-[#1d1d1f]/80 px-6 py-3 backdrop-blur-md transition-shadow",
+          isScrolled
+            ? "border border-white/[0.1] shadow-[0px_2px_3px_-1px_rgba(0,0,0,0.1),0px_1px_0px_0px_rgba(25,28,33,0.02),0px_0px_0px_1px_rgba(25,28,33,0.08)]"
+            : "border-b border-white/[0.1]" // No topo, apenas borda inferior
+        )}
+      >
+        {/* LOGO INURA */}
+        <div className="flex items-center">
+          <span className="text-lg font-bold tracking-tight text-white">
+            INURA
+          </span>
         </div>
-      </div>
 
-      {/* MOBILE MENU */}
-      {!isAboveMediumScreens && isMenutoggled && (
-        <div className="fixed right-0 top-0 z-40 h-full w-[300px] bg-[#1d1d1f] drop-shadow-xl border-l border-gray-800">
+        {/* LINKS DESKTOP */}
+        {isAboveMediumScreens && (
+          <div className="flex items-center gap-6">
+            <Link
+              page="maquina"
+              label="A Máquina"
+              selectedPage={selectedPage}
+              setSelectedPage={setSelectedPage}
+            />
+            <Link
+              page="blindagem"
+              label="A Blindagem"
+              selectedPage={selectedPage}
+              setSelectedPage={setSelectedPage}
+            />
+            <Link
+              page="casos"
+              label="Casos de Sucesso"
+              selectedPage={selectedPage}
+              setSelectedPage={setSelectedPage}
+            />
+            <Link
+              page="ecossistema"
+              label="Ecossistema"
+              selectedPage={selectedPage}
+              setSelectedPage={setSelectedPage}
+            />
+          </div>
+        )}
+
+        {/* BOTÃO E MENU MOBILE */}
+        <div className="flex items-center gap-4">
+          {isAboveMediumScreens ? (
+            <ActionButton setSelectedPage={setSelectedPage}>
+              Falar com Engenheiro
+            </ActionButton>
+          ) : (
+            <button
+              className="rounded-full bg-white/10 p-2 transition-colors hover:bg-white/20"
+              onClick={() => setIsMenuToggled(!isMenuToggled)}
+            >
+              <Bars3Icon className="h-5 w-5 text-white" />
+            </button>
+          )}
+        </div>
+      </motion.nav>
+
+      {/* MOBILE MENU MODAL */}
+      {!isAboveMediumScreens && isMenuToggled && (
+        <motion.div
+          initial={{ opacity: 0, x: 300 }}
+          animate={{ opacity: 1, x: 0 }}
+          exit={{ opacity: 0, x: 300 }}
+          className="fixed right-0 top-0 z-[100] h-full w-[300px] border-l border-white/10 bg-[#1d1d1f] drop-shadow-2xl"
+        >
           <div className="flex justify-end p-8">
             <button
-              className="rounded-full bg-gray-800 p-2"
-              onClick={() => setIsMenuToggled(!isMenutoggled)}
+              className="rounded-full bg-white/10 p-2 transition-colors hover:bg-white/20"
+              onClick={() => setIsMenuToggled(!isMenuToggled)}
             >
               <XMarkIcon className="h-5 w-5 text-white" />
             </button>
           </div>
-
-          <div className="ml-[25%] flex flex-col gap-8 text-lg">
+          <div className="ml-[25%] flex flex-col gap-8 text-lg font-medium">
             <Link
-              page="hero"
-              label="Visão geral"
+              page="maquina"
+              label="A Máquina"
               selectedPage={selectedPage}
               setSelectedPage={setSelectedPage}
             />
             <Link
-              page="server"
-              label="Especificações"
+              page="blindagem"
+              label="A Blindagem"
               selectedPage={selectedPage}
               setSelectedPage={setSelectedPage}
             />
             <Link
-              page="vps"
-              label="Comparar"
+              page="casos"
+              label="Casos de Sucesso"
               selectedPage={selectedPage}
               setSelectedPage={setSelectedPage}
             />
             <Link
-              page="support"
-              label="Mude do PC para o Mac"
+              page="ecossistema"
+              label="Ecossistema"
               selectedPage={selectedPage}
               setSelectedPage={setSelectedPage}
             />
+            <div className="mt-4">
+              <ActionButton setSelectedPage={setSelectedPage}>
+                Falar com Engenheiro
+              </ActionButton>
+            </div>
           </div>
-        </div>
+        </motion.div>
       )}
-    </nav>
+    </AnimatePresence>
   );
 };
 
