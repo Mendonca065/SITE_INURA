@@ -63,25 +63,25 @@ const Navbar = ({ selectedPage, setSelectedPage }: Props) => {
         {isAboveMediumScreens && (
           <div className="flex items-center gap-6">
             <Link
-              page="maquina"
+              page="highlights"
               label="A Máquina"
               selectedPage={selectedPage}
               setSelectedPage={setSelectedPage}
             />
             <Link
-              page="blindagem"
+              page="shielding"
               label="A Blindagem"
               selectedPage={selectedPage}
               setSelectedPage={setSelectedPage}
             />
             <Link
-              page="casos"
+              page="proof"
               label="Casos de Sucesso"
               selectedPage={selectedPage}
               setSelectedPage={setSelectedPage}
             />
             <Link
-              page="ecossistema"
+              page="services"
               label="Ecossistema"
               selectedPage={selectedPage}
               setSelectedPage={setSelectedPage}
@@ -124,25 +124,25 @@ const Navbar = ({ selectedPage, setSelectedPage }: Props) => {
           </div>
           <div className="ml-[25%] flex flex-col gap-8 text-lg font-medium">
             <Link
-              page="maquina"
+              page="highlights"
               label="A Máquina"
               selectedPage={selectedPage}
               setSelectedPage={setSelectedPage}
             />
             <Link
-              page="blindagem"
+              page="shielding"
               label="A Blindagem"
               selectedPage={selectedPage}
               setSelectedPage={setSelectedPage}
             />
             <Link
-              page="casos"
+              page="proof"
               label="Casos de Sucesso"
               selectedPage={selectedPage}
               setSelectedPage={setSelectedPage}
             />
             <Link
-              page="ecossistema"
+              page="services"
               label="Ecossistema"
               selectedPage={selectedPage}
               setSelectedPage={setSelectedPage}
