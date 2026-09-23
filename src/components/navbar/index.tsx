@@ -54,9 +54,11 @@ const Navbar = ({ selectedPage, setSelectedPage }: Props) => {
       >
         {/* LOGO INURA */}
         <div className="flex items-center">
-          <span className="text-lg font-bold tracking-tight text-white">
-            INURA
-          </span>
+          <img 
+            src="/INURA_logo_texto-branco.png" 
+            alt="Logo Inura" 
+            className="h-6 object-contain md:h-8" 
+            />
         </div>
 
         {/* LINKS DESKTOP */}

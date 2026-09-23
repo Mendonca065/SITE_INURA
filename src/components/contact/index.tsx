@@ -61,7 +61,7 @@ const Contact = ({ setSelectedPage }: Props) => {
               <div className="mt-8 space-y-4">
                 {/* Botão WhatsApp */}
                 <a 
-                  href="https://wa.me/5583900000000?text=Olá,%20gostaria%20de%20consultar%20a%20viabilidade%20do%20Link%20Dedicado%20INURA." 
+                  href="https://wa.me/83999458555?text=Olá,%20gostaria%20de%20consultar%20a%20viabilidade%20do%20Link%20Dedicado%20INURA." 
                   target="_blank" 
                   rel="noopener noreferrer"
                   className="flex items-center justify-center gap-3 w-full rounded-full bg-orange-500 py-4 px-6 text-sm font-semibold text-white transition-all duration-300 hover:bg-orange-600 shadow-lg shadow-orange-500/20"

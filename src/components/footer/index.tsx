@@ -1,7 +1,6 @@
 import { motion } from "framer-motion";
 import AnchorLink from "react-anchor-link-smooth-scroll";
 import { MapPin, Phone, Mail } from "lucide-react";
-import Logo from "@/assets/Logo.png";
 import type { SelectedPage } from "@/utils/types";
 
 type Props = {
@@ -26,7 +25,7 @@ const Footer = ({ setSelectedPage }: Props) => {
           
           {/* Coluna 1: Logo, Posicionamento B2B e Badge de SLA */}
           <div className="md:col-span-5 space-y-6">
-            <img alt="INURA Telelocom" src={Logo} className="h-10 sm:h-12 w-auto object-contain" />
+            <img alt="INURA Telelocom" src="/INURA_logo_texto-branco.png" className="h-10 sm:h-12 w-auto object-contain" />
             
             <p className="max-w-sm text-sm sm:text-base font-normal leading-relaxed text-[#86868b]">
               Conectividade corporativa de alto desempenho. Infraestrutura em fibra óptica 100% dedicada, rotas redundantes e resiliência absoluta para operações críticas.
@@ -120,7 +119,7 @@ const Footer = ({ setSelectedPage }: Props) => {
               <li className="flex items-center gap-3">
                 <Phone size={18} className="shrink-0 text-orange-500" />
                 <a
-                  href="https://wa.me/558331429400"
+                  href="https://wa.me/5583999458555"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="transition-colors duration-300 hover:text-white"

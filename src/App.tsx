@@ -44,7 +44,7 @@ function App() {
       <Highlights setSelectedPage={setSelectedPage} />
       
       {/* 3. Exploração Profunda (Rotas Inteligentes IX e Manifesto) */}
-      <DeepDive />
+      {/* <DeepDive /> */}
 
       {/* 4. A Blindagem: Ensina ao cliente corporativo que essa velocidade é protegida por segurança impenetrável (IP Dedicado, Dupla Abordagem e Monitoramento Proativo) */}
       <Shielding setSelectedPage={setSelectedPage}/>
