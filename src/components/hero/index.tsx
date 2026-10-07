@@ -3,6 +3,13 @@ import bgHero from "@/assets/bg-hero.jpg";
 import FibreArc from "../ui/FibreArc"; 
 
 export default function Hero() {
+  // CONFIGURAÇÃO DO WHATSAPP
+  const whatsappNumber = "5583999458555"; 
+  const defaultMessage = encodeURIComponent(
+    "Olá! Gostaria de consultar a viabilidade do Link Dedicado da INURA para a minha empresa."
+  );
+  const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${defaultMessage}`;
+
   return (
     <section
       id="hero"
@@ -51,9 +58,11 @@ export default function Hero() {
           {/* Botões de Ação estilo Industrial/SaaS High-End */}
           <div className="pointer-events-auto flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
             
-            {/* Botão Primário: Laranja sólido com microborda de luz interna */}
+            {/* Botão Primário: Redireciona para o WhatsApp */}
             <a
-              href="#support"
+              href={whatsappUrl}
+              target="_blank"
+              rel="noopener noreferrer"
               className="group relative inline-flex h-11 items-center justify-center gap-2 rounded-lg bg-orange-500 px-6 text-sm font-medium text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.3),0_1px_2px_rgba(0,0,0,0.4)] transition-all hover:bg-orange-600 active:scale-[0.98]"
             >
               <span>Consultar Viabilidade</span>

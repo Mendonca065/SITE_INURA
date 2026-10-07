@@ -15,7 +15,7 @@ function cn(...inputs: ClassValue[]) {
 }
 
 type Props = {
-  isTopOfPage: boolean; // Se não estiver usando, pode remover
+  isTopOfPage?: boolean;
   selectedPage: SelectedPage;
   setSelectedPage: (value: SelectedPage) => void;
 };
@@ -26,6 +26,13 @@ const Navbar = ({ selectedPage, setSelectedPage }: Props) => {
   
   const { scrollY } = useScroll();
   const [isScrolled, setIsScrolled] = useState(false);
+
+  // CONFIGURAÇÃO DO WHATSAPP
+  const whatsappNumber = "5583999458555"; 
+  const defaultMessage = encodeURIComponent(
+    "Olá! Gostaria de falar com um engenheiro de redes sobre o Link Dedicado da INURA."
+  );
+  const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${defaultMessage}`;
 
   // Lógica Resizable: Verifica se passou de 50px de scroll para encolher a navbar
   useMotionValueEvent(scrollY, "change", (current) => {
@@ -58,7 +65,7 @@ const Navbar = ({ selectedPage, setSelectedPage }: Props) => {
             src="/INURA_logo_texto-branco.png" 
             alt="Logo Inura" 
             className="h-6 object-contain md:h-8" 
-            />
+          />
         </div>
 
         {/* LINKS DESKTOP */}
@@ -94,7 +101,7 @@ const Navbar = ({ selectedPage, setSelectedPage }: Props) => {
         {/* BOTÃO E MENU MOBILE */}
         <div className="flex items-center gap-4">
           {isAboveMediumScreens ? (
-            <ActionButton setSelectedPage={setSelectedPage}>
+            <ActionButton href={whatsappUrl}>
               Falar com Engenheiro
             </ActionButton>
           ) : (
@@ -124,7 +131,7 @@ const Navbar = ({ selectedPage, setSelectedPage }: Props) => {
               <XMarkIcon className="h-5 w-5 text-white" />
             </button>
           </div>
-          <div className="ml-[25%] flex flex-col gap-8 text-lg font-medium">
+          <div className="ml-[25%] flex flex-col gap-8 text-lg font-medium pr-8">
             <Link
               page="highlights"
               label="A Máquina"
@@ -150,7 +157,11 @@ const Navbar = ({ selectedPage, setSelectedPage }: Props) => {
               setSelectedPage={setSelectedPage}
             />
             <div className="mt-4">
-              <ActionButton setSelectedPage={setSelectedPage}>
+              <ActionButton 
+                href={whatsappUrl} 
+                onClick={() => setIsMenuToggled(false)}
+                className="w-full py-3 text-sm"
+              >
                 Falar com Engenheiro
               </ActionButton>
             </div>
