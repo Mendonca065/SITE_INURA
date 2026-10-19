@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import AnchorLink from "react-anchor-link-smooth-scroll";
 import { MapPin, Phone, Mail } from "lucide-react";
+import { useTranslation } from "react-i18next";
 import type { SelectedPage } from "@/utils/types";
 
 type Props = {
@@ -8,6 +9,8 @@ type Props = {
 };
 
 const Footer = ({ setSelectedPage }: Props) => {
+  const { t } = useTranslation();
+
   return (
     <footer className="relative bg-black text-white border-t border-white/10 overflow-hidden selection:bg-orange-500 selection:text-white">
       
@@ -25,22 +28,22 @@ const Footer = ({ setSelectedPage }: Props) => {
           
           {/* Coluna 1: Logo, Posicionamento B2B e Badge de SLA */}
           <div className="md:col-span-5 space-y-6">
-            <img alt="INURA Telelocom" src="/INURA_logo_texto-branco.png" className="h-10 sm:h-12 w-auto object-contain" />
+            <img alt="INURA Telecom" src="/INURA_logo_texto-branco.png" className="h-10 sm:h-12 w-auto object-contain" />
             
             <p className="max-w-sm text-sm sm:text-base font-normal leading-relaxed text-[#86868b]">
-              Conectividade corporativa de alto desempenho. Infraestrutura em fibra óptica 100% dedicada, rotas redundantes e resiliência absoluta para operações críticas.
+              {t("footer.description", "Conectividade corporativa de alto desempenho. Infraestrutura em fibra óptica 100% dedicada, rotas redundantes e resiliência absoluta para operações críticas.")}
             </p>
 
             <div className="inline-flex items-center gap-2 rounded-full border border-emerald-500/20 bg-emerald-500/10 px-3 py-1.5 text-xs font-medium text-emerald-400">
               <span className="h-2 w-2 rounded-full bg-emerald-400 animate-pulse" />
-              Operação com SLA de até 99,9%
+              {t("footer.slaBadge", "Operação com SLA de até 99,9%")}
             </div>
           </div>
 
-          {/* Coluna 2: Navegação Rápida com AnchorLink */}
+          {/* Coluna 2: Navegação Rápida */}
           <div className="md:col-span-3">
             <h3 className="mb-6 text-xs font-semibold uppercase tracking-[0.2em] text-orange-500">
-              Navegação
+              {t("footer.navTitle", "Navegação")}
             </h3>
 
             <ul className="space-y-3 text-sm font-medium text-[#86868b]">
@@ -50,7 +53,7 @@ const Footer = ({ setSelectedPage }: Props) => {
                   onClick={() => setSelectedPage?.("hero")}
                   className="transition-colors duration-300 hover:text-white"
                 >
-                  Início
+                  {t("footer.navHome", "Início")}
                 </AnchorLink>
               </li>
               <li>
@@ -59,7 +62,7 @@ const Footer = ({ setSelectedPage }: Props) => {
                   onClick={() => setSelectedPage?.("highlights")}
                   className="transition-colors duration-300 hover:text-white"
                 >
-                  Destaques
+                  {t("footer.navHighlights", "Destaques")}
                 </AnchorLink>
               </li>
               <li>
@@ -68,7 +71,7 @@ const Footer = ({ setSelectedPage }: Props) => {
                   onClick={() => setSelectedPage?.("shielding")}
                   className="transition-colors duration-300 hover:text-white"
                 >
-                  A Blindagem
+                  {t("footer.navShielding", "A Blindagem")}
                 </AnchorLink>
               </li>
               <li>
@@ -77,7 +80,7 @@ const Footer = ({ setSelectedPage }: Props) => {
                   onClick={() => setSelectedPage?.("proof")}
                   className="transition-colors duration-300 hover:text-white"
                 >
-                  Matriz de Decisão
+                  {t("footer.navProof", "Matriz de Decisão")}
                 </AnchorLink>
               </li>
               <li>
@@ -86,7 +89,7 @@ const Footer = ({ setSelectedPage }: Props) => {
                   onClick={() => setSelectedPage?.("services")}
                   className="transition-colors duration-300 hover:text-white"
                 >
-                  Ecossistema INURA
+                  {t("footer.navServices", "Ecossistema INURA")}
                 </AnchorLink>
               </li>
               <li>
@@ -95,7 +98,7 @@ const Footer = ({ setSelectedPage }: Props) => {
                   onClick={() => setSelectedPage?.("contact")}
                   className="transition-colors duration-300 hover:text-white"
                 >
-                  Contato Corporativo
+                  {t("footer.navContact", "Contato Corporativo")}
                 </AnchorLink>
               </li>
             </ul>
@@ -104,15 +107,14 @@ const Footer = ({ setSelectedPage }: Props) => {
           {/* Coluna 3: Canais de Atendimento */}
           <div className="md:col-span-4">
             <h3 className="mb-6 text-xs font-semibold uppercase tracking-[0.2em] text-orange-500">
-              Atendimento Especializado
+              {t("footer.contactTitle", "Atendimento Especializado")}
             </h3>
 
             <ul className="space-y-4 text-sm text-[#86868b]">
               <li className="flex items-start gap-3">
                 <MapPin size={18} className="mt-0.5 shrink-0 text-orange-500" />
                 <span className="leading-relaxed">
-                  Av. Pres. José Linhares, 204 - Sala 203 <br />
-                  Bessa, João Pessoa - PB
+                  {t("footer.address", "Av. Pres. José Linhares, 204 - Sala 203 // Bessa, João Pessoa - PB")}
                 </span>
               </li>
 
@@ -144,8 +146,8 @@ const Footer = ({ setSelectedPage }: Props) => {
 
         {/* Linha Divisória e Copyright */}
         <div className="mt-16 flex flex-col items-center justify-between gap-4 border-t border-white/5 pt-8 text-center sm:flex-row sm:text-left text-xs text-[#86868b]">
-          <p>© {new Date().getFullYear()} INURA. Todos os direitos reservados.</p>
-          <p>Conectividade B2B de Alta Disponibilidade</p>
+          <p>© {new Date().getFullYear()} INURA. {t("footer.rights", "Todos os direitos reservados.")}</p>
+          <p>{t("footer.tagline", "Conectividade B2B de Alta Disponibilidade")}</p>
         </div>
       </motion.div>
     </footer>

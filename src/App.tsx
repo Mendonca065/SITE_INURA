@@ -3,8 +3,6 @@ import Hero from "@/components/hero";
 import { useEffect, useState } from "react";
 import type { SelectedPage } from "@/utils/types";
 import Highlights from "./components/highlights";
-import DeepDive from "./components/deep-dive";
-import Vps from "./components/vps";
 import Services from "./components/services";
 import Contact from "./components/contact";
 import Footer from "./components/footer";
@@ -38,7 +36,7 @@ function App() {
       />
       
       {/* 1. O Topo Imersivo */}
-      <Hero setSelectedPage={setSelectedPage} />
+      <Hero/>
       
       {/* 2. Carrossel de Destaques (Bento Box da Apple) */}
       <Highlights setSelectedPage={setSelectedPage} />

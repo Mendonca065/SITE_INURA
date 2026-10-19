@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
-import { Wifi, Network, ArrowUpRight } from "lucide-react";
-import AnchorLink from "react-anchor-link-smooth-scroll";
+import { Wifi, Network } from "lucide-react";
+import { useTranslation } from "react-i18next";
 import type { SelectedPage } from "@/utils/types";
 
 type Props = {
@@ -8,6 +8,8 @@ type Props = {
 };
 
 const Services = ({ setSelectedPage }: Props) => {
+  const { t } = useTranslation();
+
   return (
     <section id="services" className="relative bg-black py-32 text-white overflow-hidden selection:bg-orange-500 selection:text-white">
       
@@ -24,7 +26,7 @@ const Services = ({ setSelectedPage }: Props) => {
             viewport={{ once: true }}
             className="mb-3 text-xs font-semibold uppercase tracking-[0.25em] text-orange-500"
           >
-            Soluções Complementares
+            {t("services.badge", "Soluções Complementares")}
           </motion.span>
           
           <motion.h2 
@@ -34,7 +36,7 @@ const Services = ({ setSelectedPage }: Props) => {
             transition={{ delay: 0.1 }}
             className="bg-gradient-to-b from-white via-white/90 to-white/30 bg-clip-text text-5xl font-extrabold tracking-tight text-transparent sm:text-7xl md:text-8xl"
           >
-            Ecossistema INURA.
+            {t("services.title", "Ecossistema INURA.")}
           </motion.h2>
 
           <motion.p 
@@ -44,7 +46,7 @@ const Services = ({ setSelectedPage }: Props) => {
             transition={{ delay: 0.2 }}
             className="mt-6 max-w-2xl text-lg font-normal text-[#86868b] sm:text-2xl leading-relaxed tracking-tight"
           >
-            Expandimos a infraestrutura dedicada com soluções sob medida para conectar filiais e garantir sinal Wi-Fi impecável em ambientes de alta densidade.
+            {t("services.subtitle", "Expandimos a infraestrutura dedicada com soluções sob medida para conectar filiais e garantir sinal Wi-Fi impecável em ambientes de alta densidade.")}
           </motion.p>
         </div>
 
@@ -65,21 +67,19 @@ const Services = ({ setSelectedPage }: Props) => {
               </div>
 
               <span className="rounded-full bg-white/5 border border-white/10 px-3 py-1 text-[11px] font-medium uppercase tracking-wider text-[#86868b]">
-                Interconexão de Unidades
+                {t("services.p2p.tag", "Interconexão de Unidades")}
               </span>
 
               <h3 className="mt-4 text-3xl font-bold tracking-tight text-white sm:text-4xl">
-                Link Ponto a Ponto.
+                {t("services.p2p.title", "Link Ponto a Ponto.")}
               </h3>
               
               <p className="mt-4 text-base font-normal leading-relaxed text-[#86868b] sm:text-lg">
-                Conecte filiais, datacenters e escritórios em uma rede L2/L3 dedicada em fibra óptica. Transmissão privada com latência quase nula e segurança total de dados sem passar pela internet pública.
+                {t("services.p2p.description", "Conecte filiais, datacenters e escritórios em uma rede L2/L3 dedicada em fibra óptica. Transmissão privada com latência quase nula e segurança total de dados sem passar pela internet pública.")}
               </p>
             </div>
 
-            <div className="mt-10 border-t border-white/5 pt-6">
-             
-            </div>
+            <div className="mt-10 border-t border-white/5 pt-6" />
           </motion.div>
 
           {/* Card 2: Wi-Fi Hotspot de Alta Densidade */}
@@ -96,21 +96,19 @@ const Services = ({ setSelectedPage }: Props) => {
               </div>
 
               <span className="rounded-full bg-white/5 border border-white/10 px-3 py-1 text-[11px] font-medium uppercase tracking-wider text-[#86868b]">
-                Infraestrutura de Acesso
+                {t("services.wifi.tag", "Infraestrutura de Acesso")}
               </span>
 
               <h3 className="mt-4 text-3xl font-bold tracking-tight text-white sm:text-4xl">
-                Wi-Fi Corporativo Pro.
+                {t("services.wifi.title", "Wi-Fi Corporativo Pro.")}
               </h3>
               
               <p className="mt-4 text-base font-normal leading-relaxed text-[#86868b] sm:text-lg">
-                Projetado para centenas de acessos simultâneos sem gargalos. Dimensionamento de Access Points profissionais, captive portal personalizado e roaming contínuo em todo o seu espaço corporativo ou evento.
+                {t("services.wifi.description", "Projetado para centenas de acessos simultâneos sem gargalos. Dimensionamento de Access Points profissionais, captive portal personalizado e roaming contínuo em todo o seu espaço corporativo ou evento.")}
               </p>
             </div>
 
-            <div className="mt-10 border-t border-white/5 pt-6">
-            
-            </div>
+            <div className="mt-10 border-t border-white/5 pt-6" />
           </motion.div>
 
         </div>

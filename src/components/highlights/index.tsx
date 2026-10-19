@@ -1,14 +1,17 @@
 import { motion } from "framer-motion";
 import { Cpu, Zap, Activity, Gauge } from "lucide-react";
+import { useTranslation } from "react-i18next";
 import HighlightCard from "./HighlightCard";
 import type { SelectedPage } from "@/utils/types";
-import DataPixelArc from "@/components/backgrounds/pixelArc"; // Importação do DataPixelArc
+import DataPixelArc from "@/components/backgrounds/pixelArc";
 
 type Props = {
   setSelectedPage: (value: SelectedPage) => void;
 };
 
 const Highlights = ({ setSelectedPage }: Props) => {
+  const { t } = useTranslation();
+
   return (
     <section 
       id="highlights" 
@@ -36,7 +39,7 @@ const Highlights = ({ setSelectedPage }: Props) => {
             viewport={{ once: true }}
             className="mb-3 text-[10px] sm:text-xs font-semibold uppercase tracking-[0.2em] sm:tracking-[0.25em] text-orange-500"
           >
-            A Máquina
+            {t("highlights.tag", "A Máquina")}
           </motion.span>
 
           <motion.h2 
@@ -46,7 +49,7 @@ const Highlights = ({ setSelectedPage }: Props) => {
             transition={{ delay: 0.1 }}
             className="bg-gradient-to-b from-white via-white/90 to-white/30 bg-clip-text text-3xl font-extrabold tracking-tight text-transparent sm:text-6xl md:text-7xl lg:text-8xl"
           >
-            Projetado para o extremo.
+            {t("highlights.title", "Projetado para o extremo.")}
           </motion.h2>
 
           <motion.p 
@@ -56,7 +59,7 @@ const Highlights = ({ setSelectedPage }: Props) => {
             transition={{ delay: 0.2 }}
             className="mt-4 sm:mt-6 max-w-2xl text-sm sm:text-lg md:text-2xl font-normal text-[#86868b] leading-relaxed tracking-tight"
           >
-            Engenharia de fibra óptica sem compartilhamento. Toda a capacidade contratada entregue com latência mínima e simetria absoluta.
+            {t("highlights.subtitle", "Engenharia de fibra óptica sem compartilhamento. Toda a capacidade contratada entregue com latência mínima e simetria absoluta.")}
           </motion.p>
         </div>
 
@@ -77,10 +80,10 @@ const Highlights = ({ setSelectedPage }: Props) => {
           <HighlightCard 
             className="md:col-span-2 backdrop-blur-md"
             icon={Cpu}
-            tag="1.1 A Engenharia"
-            title="Fibra Ponto a Ponto Exclusiva."
-            description="Conexão direta do nosso backbone central até o seu rack. Sem divisores ópticos (splitterless), sem atenuação e sem dividir banda com vizinhos comerciais."
-            badge="Garantia 1:1"
+            tag={t("highlights.card1.tag", "1.1 A Engenharia")}
+            title={t("highlights.card1.title", "Fibra Ponto a Ponto Exclusiva.")}
+            description={t("highlights.card1.description", "Conexão direta do nosso backbone central até o seu rack. Sem divisores ópticos (splitterless), sem atenuação e sem dividir banda com vizinhos comerciais.")}
+            badge={t("highlights.card1.badge", "Garantia 1:1")}
             titleGradient={true}
           >
             {/* Visual Micro-Element: Status do Backbone */}
@@ -90,9 +93,13 @@ const Highlights = ({ setSelectedPage }: Props) => {
                   <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75" />
                   <span className="relative inline-flex h-3 w-3 rounded-full bg-emerald-500" />
                 </span>
-                <span className="text-xs font-mono text-[#86868b]">ROTA: DATACENTER DIA ➔ CLIENTE</span>
+                <span className="text-xs font-mono text-[#86868b]">
+                  {t("highlights.card1.route", "ROTA: DATACENTER DIA ➔ CLIENTE")}
+                </span>
               </div>
-              <span className="text-xs font-mono font-semibold text-emerald-400">ISOLAMENTO TOTAL</span>
+              <span className="text-xs font-mono font-semibold text-emerald-400">
+                {t("highlights.card1.status", "ISOLAMENTO TOTAL")}
+              </span>
             </div>
           </HighlightCard>
 
@@ -100,20 +107,28 @@ const Highlights = ({ setSelectedPage }: Props) => {
           <HighlightCard 
             className="md:col-span-1 backdrop-blur-md"
             icon={Gauge}
-            tag="1.2 O Pulso"
-            title="Simetria Real."
-            description="Até 100 Gbps de velocidade contínua. Upload exatamente igual ao download para suportar backups massivos e chamadas em alta definição."
-            badge="300Mbps a 100Gbps"
+            tag={t("highlights.card2.tag", "1.2 O Pulso")}
+            title={t("highlights.card2.title", "Simetria Real.")}
+            description={t("highlights.card2.description", "Até 100 Gbps de velocidade contínua. Upload exatamente igual ao download para suportar backups massivos e chamadas em alta definição.")}
+            badge={t("highlights.card2.badge", "300Mbps a 100Gbps")}
           >
             {/* Visual Micro-Element: Indicador Simétrico */}
             <div className="grid grid-cols-2 gap-2 text-center text-xs font-mono">
               <div className="rounded-xl bg-white/5 p-3 border border-white/5">
-                <span className="block text-[#86868b] text-[10px] uppercase">DOWNLOAD</span>
-                <span className="text-sm font-bold text-white">100% Entregue</span>
+                <span className="block text-[#86868b] text-[10px] uppercase">
+                  {t("highlights.card2.download", "DOWNLOAD")}
+                </span>
+                <span className="text-sm font-bold text-white">
+                  {t("highlights.card2.delivered", "100% Entregue")}
+                </span>
               </div>
               <div className="rounded-xl bg-white/5 p-3 border border-white/5">
-                <span className="block text-[#86868b] text-[10px] uppercase">UPLOAD</span>
-                <span className="text-sm font-bold text-orange-500">100% Entregue</span>
+                <span className="block text-[#86868b] text-[10px] uppercase">
+                  {t("highlights.card2.upload", "UPLOAD")}
+                </span>
+                <span className="text-sm font-bold text-orange-500">
+                  {t("highlights.card2.delivered", "100% Entregue")}
+                </span>
               </div>
             </div>
           </HighlightCard>
@@ -122,15 +137,15 @@ const Highlights = ({ setSelectedPage }: Props) => {
           <HighlightCard 
             className="md:col-span-1 backdrop-blur-md"
             icon={Zap}
-            tag="1.3 O Backbone"
-            title="Roteamento Inteligente."
-            description="Tráfego direcionado aos principais IXs e Data Centers do país pelas rotas físicas mais curtas e sem gargalos intermediários."
-            badge="Latência Mínima"
+            tag={t("highlights.card3.tag", "1.3 O Backbone")}
+            title={t("highlights.card3.title", "Roteamento Inteligente.")}
+            description={t("highlights.card3.description", "Tráfego direcionado aos principais IXs e Data Centers do país pelas rotas físicas mais curtas e sem gargalos intermediários.")}
+            badge={t("highlights.card3.badge", "Latência Mínima")}
           >
             {/* Visual Micro-Element: Métricas de Ping */}
             <div className="space-y-1.5 text-xs font-mono">
               <div className="mb-2 text-[10px] font-semibold uppercase tracking-wider text-[#86868b]">
-                Latência Média de Redes (RTT)
+                {t("highlights.card3.rttTitle", "Latência Média de Redes (RTT)")}
               </div>
 
               {[
@@ -158,15 +173,17 @@ const Highlights = ({ setSelectedPage }: Props) => {
           <HighlightCard 
             className="md:col-span-2 backdrop-blur-md"
             icon={Activity}
-            tag="1.4 Visibilidade"
-            title="Controle em Tempo Real."
-            description="Acompanhe o tráfego, pacotes e disponibilidade da sua rede com transparência total através de dashboards dedicados."
-            badge="Telemetria Proativa"
+            tag={t("highlights.card4.tag", "1.4 Visibilidade")}
+            title={t("highlights.card4.title", "Controle em Tempo Real.")}
+            description={t("highlights.card4.description", "Acompanhe o tráfego, pacotes e disponibilidade da sua rede com transparência total através de dashboards dedicados.")}
+            badge={t("highlights.card4.badge", "Telemetria Proativa")}
           >
             {/* Visual Micro-Element: Gráfico Simulado */}
             <div className="flex items-center justify-between rounded-2xl border border-white/5 bg-white/5 p-4 backdrop-blur-sm">
               <div className="space-y-1">
-                <span className="block text-[11px] font-mono text-[#86868b] uppercase">Disponibilidade de Link</span>
+                <span className="block text-[11px] font-mono text-[#86868b] uppercase">
+                  {t("highlights.card4.availabilityLabel", "Disponibilidade de Link")}
+                </span>
                 <span className="text-lg font-bold text-white">99.99% Operational</span>
               </div>
               <div className="flex gap-1">

@@ -1,0 +1,198 @@
+{
+  "nav": {
+    "highlights": "A Máquina",
+    "shielding": "A Blindagem",
+    "proof": "Casos de Sucesso",
+    "services": "Ecossistema",
+    "cta": "Falar com Engenheiro",
+    "whatsappMsg": "Olá! Gostaria de falar com um engenheiro de redes sobre o Link Dedicado da INURA."
+  },
+  "hero": {
+    "badge": "Backbone Corporativo // SLA 99.98%",
+    "title": "Conectividade crítica para operações que não toleram oscilação.",
+    "subtitle": "Rotas diretas de fibra óptica, IP fixo exclusivo e suporte técnico de nível sênior em regime 24/7.",
+    "ctaPrimary": "Consultar Viabilidade",
+    "ctaSecondary": "Topologia da Rede",
+    "whatsappMsg": "Olá! Gostaria de consultar a viabilidade do Link Dedicado da INURA para a minha empresa.",
+    "packetLoss": "perda de pacotes",
+    "symmetricBand": "banda simétrica garantida",
+    "mttr": "MTTR emergencial"
+  },
+  "highlights": {
+    "tag": "A Máquina",
+    "badge": "Engenharia de Infraestrutura",
+    "title": "A Máquina por trás do seu Link Dedicado",
+    "subtitle": "Projetado com redundância total e baixa latência para manter sua empresa online 100% do tempo.",
+    "card1": {
+      "tag": "1.1 A Engenharia",
+      "title": "Fibra Ponto a Ponto Exclusiva.",
+      "description": "Conexão direta do nosso backbone central até o seu rack. Sem divisores ópticos, sem atenuação e sem dividir banda com vizinhos comerciais.",
+      "badge": "Garantia 1:1",
+      "route": "ROTA: DATACENTER DIA ➔ CLIENTE",
+      "status": "ISOLAMENTO TOTAL"
+    },
+    "card2": {
+      "tag": "1.2 O Pulso",
+      "title": "Simetria Real.",
+      "description": "Até 100 Gbps de velocidade contínua. Upload exatamente igual ao download para suportar backups massivos e chamadas em alta definição.",
+      "badge": "300Mbps a 100Gbps",
+      "download": "DOWNLOAD",
+      "upload": "UPLOAD",
+      "delivered": "100% Entregue"
+    },
+    "card3": {
+      "tag": "1.3 O Backbone",
+      "title": "Roteamento Inteligente.",
+      "description": "Tráfego direcionado aos principais IXs e Data Centers do país pelas rotas físicas mais curtas e sem gargalos intermediários.",
+      "badge": "Latência Mínima",
+      "rttTitle": "Latência Média de Redes (RTT)"
+    },
+    "card4": {
+      "tag": "1.4 Visibilidade",
+      "title": "Controle em Tempo Real.",
+      "description": "Acompanhe o tráfego, pacotes e disponibilidade da sua rede com transparência total através de dashboards dedicados.",
+      "badge": "Telemetria Proativa",
+      "availabilityLabel": "Disponibilidade de Link"
+    }
+  },
+  "shielding": {
+    "badge": "Segurança & Resiliência",
+    "title": "A Blindagem.",
+    "subtitle": "Sua operação imune a paralisações. Infraestrutura de ponta projetada para entregar estabilidade absoluta e zero downtime.",
+    "card1": {
+      "badge": "Exclusividade & Controle",
+      "title": "IP Dedicado Exclusivo.",
+      "description": "Identidade fixa na rede para máxima estabilidade. Garanta conexões remotas ultra seguras via VPN, hospedagem interna confiável e controle total da sua infraestrutura sem variações de IP.",
+      "footLabel": "BLOCO: IPv4 / IPv6 FIXO",
+      "footStatus": "VPN READY"
+    },
+    "card2": {
+      "badge": "Módulo Opcional · Redundância",
+      "title": "Dupla Abordagem Física.",
+      "description": "Para operações críticas que exigem tolerância zero a falhas, você pode solicitar a inclusão da dupla abordagem. São duas rotas de fibra 100% independentes: se a física principal sofrer uma interrupção, a secundária assume na hora, elevando o SLA para 99,9%.",
+      "footLabel": "SOLICITE SOB DEMANDA",
+      "footStatus": "SLA ATÉ 99.9%"
+    },
+    "card3": {
+      "badge": "Suporte Dedicado 24/7",
+      "title": "Atendimento INURA Elite & SLA de 12h.",
+      "description": "Monitoramento proativo em tempo real para antecipar falhas. Esqueça os atendimentos automatizados: receba suporte direto com engenheiros especializados e tempo de reparo garantido em até 12 horas.",
+      "metric1Label": "TEMPO DE REPARO",
+      "metric1Val": "ATÉ 12H",
+      "metric2Label": "ENGENHARIA",
+      "metric2Val": "NOC 24/7"
+    }
+  },
+  "proof": {
+    "badge": "A Prova & A Engenharia",
+    "title": "Matriz de Decisão.",
+    "subtitle": "Entenda por que conexões convencionais colapsam em operações críticas e como nossa arquitetura entrega performance inegociável.",
+    "mobileInuraTag": "INURA Dedicado",
+    "casesTitle": "O Teste de Fogo.",
+    "casesSubtitle": "Resultados consolidados onde a interrupção da rede não é uma opção.",
+    "cta": "Quero essa mesma infraestrutura na minha empresa",
+    "table": {
+      "feature": "Métrica de Infraestrutura",
+      "broadband": "Banda Larga Comum",
+      "semiDedicated": "Semi-Dedicado",
+      "inura": "Link Dedicado INURA"
+    },
+    "matrix": {
+      "row1": {
+        "title": "Compartilhamento de Rede",
+        "inura": "Fibra Exclusiva (1:1)",
+        "broadband": "Até 256 clientes dividindo a porta",
+        "semi": "Até 16 clientes por porta"
+      },
+      "row2": {
+        "title": "Estabilidade & Simetria",
+        "inura": "100% Simétrico 24/7",
+        "broadband": "Pode oscilar nos horários de pico",
+        "semi": "Simetria parcial"
+      },
+      "row3": {
+        "title": "Início de Reparo",
+        "inura": "Até 12 horas corridas",
+        "broadband": "Até 72 horas úteis",
+        "semi": "Até 24 horas"
+      },
+      "row4": {
+        "title": "Garantia Contratual (SLA)",
+        "inura": "99,9% Garantido",
+        "broadband": "Sem garantia (Best Effort)",
+        "semi": "97,5% de disponibilidade"
+      }
+    },
+    "paraiso": {
+      "tag": "Case de Alta Densidade",
+      "subtag": "Infraestrutura + Wi-Fi Hotspot",
+      "title": "Paraíso do Atlântico",
+      "description": "Projeto fim a fim englobando Link Dedicado, Redes Personalizadas e infraestrutura Wi-Fi de alta capacidade para eventos e áreas comuns.",
+      "devices": "Conexões Simultâneas",
+      "backhaul": "Capacidade Backhaul",
+      "aps": "Pontos Wi-Fi Pro",
+      "coverage": "Área Coberta",
+      "status": "27 meses operando sem quedas"
+    },
+    "ilhaDourada": {
+      "tag": "Hotelaria & Negócios",
+      "title": "Ilha Dourada",
+      "description": "Link Dedicado corporativo com média diária de 170 conexões simultâneas sem perda de pacotes.",
+      "status": "14 meses de estabilidade contínua"
+    },
+    "numar": {
+      "tag": "Rede de Alta Velocidade",
+      "title": "Numar",
+      "description": "Velocidades de até 1200 Mbps entregues no Wi-Fi corporativo mantendo baixa latência.",
+      "status": "18 meses sem chamados técnicos"
+    }
+  },
+  "services": {
+    "badge": "Soluções Complementares",
+    "title": "Ecossistema INURA.",
+    "subtitle": "Expandimos a infraestrutura dedicada com soluções sob medida para conectar filiais e garantir sinal Wi-Fi impecável em ambientes de alta densidade.",
+    "p2p": {
+      "tag": "Interconexão de Unidades",
+      "title": "Link Ponto a Ponto.",
+      "description": "Conecte filiais, datacenters e escritórios em uma rede L2/L3 dedicada em fibra óptica. Transmissão privada com latência quase nula e segurança total de dados sem passar pela internet pública."
+    },
+    "wifi": {
+      "tag": "Infraestrutura de Acesso",
+      "title": "Wi-Fi Corporativo Pro.",
+      "description": "Projetado para centenas de acessos simultâneos sem gargalos. Dimensionamento de Access Points profissionais, captive portal personalizado e roaming contínuo em todo o seu espaço corporativo ou evento."
+    }
+  },
+  "contact": {
+    "badge": "Atendimento Especializado",
+    "title": "Elimine gargalos na sua operação.",
+    "subtitle": "Fale diretamente com nossa equipe de engenharia para avaliar a viabilidade técnica e dimensionar um projeto de conectividade sob medida.",
+    "feature1": "Análise de viabilidade técnica sem compromisso",
+    "feature2": "Atendimento humano direto por especialistas",
+    "cardTitle": "Falar com um Consultor",
+    "cardSubtitle": "Escolha o canal de preferência para dar início ao seu atendimento corporativo.",
+    "ctaWhatsapp": "Conversar via WhatsApp",
+    "phoneLabel": "Atendimento",
+    "emailLabel": "Comercial",
+    "whatsappMsg": "Olá, gostaria de consultar a viabilidade técnica e suporte do Link Dedicado INURA."
+  },
+  "footer": {
+    "description": "Conectividade corporativa de alto desempenho. Infraestrutura em fibra óptica 100% dedicada, rotas redundantes e resiliência absoluta para operações críticas.",
+    "slaBadge": "Operação com SLA de até 99,9%",
+    "navTitle": "Navegação",
+    "navHome": "Início",
+    "navHighlights": "Destaques",
+    "navShielding": "A Blindagem",
+    "navProof": "Matriz de Decisão",
+    "navServices": "Ecossistema INURA",
+    "navContact": "Contato Corporativo",
+    "contactTitle": "Atendimento Especializado",
+    "address": "Av. Pres. José Linhares, 204 - Sala 203 // Bessa, João Pessoa - PB",
+    "rights": "Todos os direitos reservados.",
+    "tagline": "Conectividade B2B de Alta Disponibilidade"
+  },
+  "common": {
+    "contact": "Contato",
+    "learnMore": "Saiba mais",
+    "backToTop": "Voltar ao topo"
+  }
+}
